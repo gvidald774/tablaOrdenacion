@@ -1,0 +1,21 @@
+.error
+{
+    border: 1px solid red;
+}
+
+.boton
+{
+    position: relative;
+    display: inline-block;
+    width: 250px;
+    height: 250px;
+    margin: 0;
+    padding: 0;
+    background-image: url("../img/icon-sprite-3.jpg");
+}
+
+.borrar
+{
+    background-position-x: 250px;
+    background-position-y: 250px;    
+}

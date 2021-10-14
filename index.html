@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio rellenar tabla</title>
+    <script src="js/tabla.js"></script>
+</head>
+<body>
+    <form id="formulario">
+        <label for="dni">DNI</label>
+        <input type="text" name="dni" id="dni" pattern="/^\d{8}[A-Z]$/" required autofocus/> &nbsp;
+        <label for="dni">Nombre</label>
+        <input type="text" name="nombre" id="nombre" required/> &nbsp;
+        <label for="dni">Edad</label>
+        <input type="number" name="edad" id="edad" required/> &nbsp;
+        <input type="submit" value="Insertar" id="insertar" />
+    </form>
+    <table border=1>
+        <thead>
+            <tr>
+                <th>DNI</th>
+                <th>Nombre</th>
+                <th>Edad</th>
+                <th>Acción</th>
+            </tr>
+        </thead>
+        <tbody id="cuerpoTabla">
+        </tbody>
+    </table>
+</body>
+</html>
