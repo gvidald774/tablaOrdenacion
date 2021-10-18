@@ -59,7 +59,6 @@ function validaFormulario()
 
 window.addEventListener("load",function()
 {
-    debugger;
     boton = document.getElementById("insertar");
     tablaContenido = document.getElementById("cuerpoTabla");
 
@@ -76,54 +75,6 @@ window.addEventListener("load",function()
             // Vamos a ver si lo limpiamos
 
             insertaFila(dni.value, nombre.value, edad.value);
-
-            /*let botonBorrado = document.createElement("input");
-            botonBorrado.value = "X";
-            botonBorrado.type = "Button";
-            botonBorrado.className = "botonBorrado";
-
-            let filaTabla = document.createElement("tr");
-            
-            let celdaTabla1 = document.createElement("td");
-            celdaTabla1.innerHTML = dni.value;
-            let celdaTabla2 = document.createElement("td");
-            celdaTabla2.innerHTML = nombre.value;
-            let celdaTabla3 = document.createElement("td");
-            celdaTabla3.innerHTML = edad.value;
-            let celdaTabla4 = document.createElement("td");
-        
-
-            celdaTabla4.appendChild(botonBorrado);
-
-            filaTabla.appendChild(celdaTabla1);
-            filaTabla.appendChild(celdaTabla2);
-            filaTabla.appendChild(celdaTabla3);
-            filaTabla.appendChild(celdaTabla4);
-
-            tablaContenido.appendChild(filaTabla);
-            dni.value = "";
-            nombre.value = "";
-            edad.value = "";
-
-            dni.focus();
-
-            var botonesDeBorrado = document.querySelectorAll(".botonBorrado");
-
-            for (let i = 0; i < botonesDeBorrado.length; i++)
-            {
-                botonesDeBorrado[i].addEventListener("click",function()
-                {
-                    let fila = this.parentNode.parentNode;
-                    fila.parentNode.removeChild(fila);
-                })
-            }
-
-            let botonModif = document.createElement("input");
-            botonModif.value = "V";
-            botonModif.type = "button";
-            botonModif.className = "botonModif";
-
-            celdaTabla4.appendChild(botonModif);*/
         }
 
         dni.value = "";
@@ -174,4 +125,97 @@ window.addEventListener("load",function()
         tablaContenido.appendChild(tr);
     }
 
+
+    const cabeceras = document.querySelectorAll("th");
+
+    for (let i = 0; i < cabeceras.length; i++)
+    {
+        cabeceras[i].mayorAMenor = true;
+    }
+
+    cabeceras[0].ondblclick = function()
+    {
+        var vector = [];
+    
+        var tBody = this.parentNode.parentNode.nextElementSibling;
+    
+        var filas = tBody.children;
+    
+        for (let i = 0; i < filas.length; i++)
+        {
+            vector.push(filas[i]);
+        }
+        if(this.mayorAMenor)
+        {
+            vector.sort(function(a,b){return a.children[0].innerHTML.localeCompare(b.children[0].innerHTML)});
+        }
+        else
+        {
+            vector.sort(function(a,b){return b.children[0].innerHTML.localeCompare(a.children[0].innerHTML)});
+        }
+        this.mayorAMenor = !this.mayorAMenor;
+    
+        for (let i = 0; i < vector.length; i++)
+        {
+            tBody.appendChild(vector[i]);
+        }
+    }
+    
+    cabeceras[1].ondblclick = function()
+    {
+        var vector = [];
+    
+        var tBody = this.parentNode.parentNode.nextElementSibling;
+    
+        var filas = tBody.children;
+    
+        for (let i = 0; i < filas.length; i++)
+        {
+            vector.push(filas[i]);
+        }
+        if(this.mayorAMenor)
+        {
+            vector.sort(function(a,b){return a.children[1].innerHTML.localeCompare(b.children[1].innerHTML)});
+        }
+        else
+        {
+            vector.sort(function(a,b){return b.children[1].innerHTML.localeCompare(a.children[1].innerHTML)});
+        }
+        this.mayorAMenor = !this.mayorAMenor;
+    
+        for (let i = 0; i < vector.length; i++)
+        {
+            tBody.appendChild(vector[i]);
+        }
+    }
+    
+    cabeceras[2].ondblclick = function()
+    {
+        var vector = [];
+    
+        var tBody = this.parentNode.parentNode.nextElementSibling;
+    
+        var filas = tBody.children;
+    
+        for (let i = 0; i < filas.length; i++)
+        {
+            vector.push(filas[i]);
+        }
+        if(this.mayorAMenor)
+        {
+            vector.sort(function(a,b){return parseInt(a.children[2].innerHTML)<parseInt(b.children[2].innerHTML)});
+        }
+        else
+        {
+            vector.sort(function(a,b){return parseInt(b.children[2].innerHTML)<parseInt(a.children[2].innerHTML)});
+        }
+        this.mayorAMenor = !this.mayorAMenor;
+    
+        for (let i = 0; i < vector.length; i++)
+        {
+            tBody.appendChild(vector[i]);
+        }
+    }
+
 })
+// Parece haber un problema con el sorting algorithm
