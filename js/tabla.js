@@ -62,6 +62,7 @@ window.addEventListener("load",function()
     boton = document.getElementById("insertar");
     tablaContenido = document.getElementById("cuerpoTabla");
 
+    insertaFila("1","1","1");
     boton.onclick = function(event)
     {
         event.preventDefault();
@@ -76,6 +77,8 @@ window.addEventListener("load",function()
 
             insertaFila(dni.value, nombre.value, edad.value);
         }
+
+        
 
         dni.value = "";
         nombre.value = "";
@@ -99,7 +102,7 @@ window.addEventListener("load",function()
         // Necesitamos un botón input type imagen, para pincharlo y tal.
         var borrar=document.createElement("span");
         borrar.className = "boton borrar";
-        borrar.innerHTML = "X";
+        //borrar.innerHTML = " X ";
         borrar.onclick = function()
         {
             var fila = this.parentNode.parentNode;
@@ -109,9 +112,9 @@ window.addEventListener("load",function()
         td4.appendChild(borrar);
 
         var editar=document.createElement("span");
-        editar.className = "boton editar";
-        borrar.innerHTML = "Y";
-        borrar.onclick = function()
+        editar.className = "boton modificar";
+        //editar.innerHTML = " M ";
+        editar.onclick = function()
         {
             var fila = this.parentNode.parentNode;
             alert("NOO SE PUEDE EDITAAAR");
